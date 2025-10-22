@@ -19,8 +19,8 @@ services:
       - mongo
     environment:
       - MONGODB_URI=mongodb+srv://$MONGO_USER:$MONGO_PASSWORD@$MONGO_HOST/$MONGO_DATABASE?authSource=admin
-      - APP_ORIGIN=$DROPLET_URL:3000
-      - API_HOST=$DROPLET_URL:3100
+      - APP_ORIGIN=$APP_ORIGIN:3000
+      - API_HOST=$API_HOST:3100
       - JWT_SECRET=$JWT_SECRET
     volumes:
       - uploads:/usr/local/src/app/packages/back-end/uploads
