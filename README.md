@@ -56,6 +56,34 @@ Then visit http://localhost:3000 to view the app.
 
 Check out the full [Self-Hosting Instructions](https://docs.growthbook.io/self-host) for more details.
 
+## Push image to DO container registry
+
+1. Login
+
+```sh
+docker login registry.digitalocean.com
+username: DO email
+password: API access token from API (DO)
+```
+
+2. Make the build
+
+```sh
+docker buildx build --platform linux/amd64 -t registry.digitalocean.com/growthbook/growthbook-app:latest .
+```
+
+3. Push the build image to container registry
+
+```sh
+docker push registry.digitalocean.com/growthbook/growthbook-app:latest
+```
+
+4. Clean local build
+
+```sh
+docker buildx prune -f
+```
+
 ## Documentation and Support
 
 View the [GrowthBook Docs](https://docs.growthbook.io) for info on how to configure and use the platform.
@@ -65,14 +93,6 @@ Join [our Slack community](https://slack.growthbook.io?ref=readme-support) if yo
 Or email us at [hello@growthbook.io](mailto:hello@growthbook.io) if Slack isn't your thing.
 
 We're here to help - and to make GrowthBook even better!
-
-## Contributors
-
-We ❤️ all contributions, big and small!
-
-Read [CONTRIBUTING.md](/CONTRIBUTING.md) for how to setup your local development environment.
-
-If you want to, you can reach out via [Slack](https://slack.growthbook.io?ref=readme-contributing) or [email](mailto:hello@growthbook.io) and we'll set up a pair programming session to get you started.
 
 ## License
 
